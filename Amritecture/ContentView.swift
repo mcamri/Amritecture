@@ -6,16 +6,42 @@
 //
 
 import SwiftUI
+import Algorithms
+import AnimalModule
+import SettingModule
+import LoginService
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+  @EnvironmentObject var routerState: RouterState
+  
+  private var appModuleContainer: AppModuleContainer
+  
+  init(appModuleContainer: AppModuleContainer) {
+    self.appModuleContainer = appModuleContainer
+  }
+  
+  var body: some View {
+    TabView(selection: $routerState.tabSelection) {
+      appModuleContainer.animalModule.view()
+        .tag(1)
+        .tabItem {
+          Image(systemName: "1.square.fill")
+          Text("Animal")
+        }
+
+      appModuleContainer.settingModule.view()
+        .tag(2)
+        .tabItem {
+          Image(systemName: "2.square.fill")
+          Text("Settings")
+        }
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView(appModuleContainer: AppModuleContainer())
+      .environmentObject(RouterState())
+  }
 }

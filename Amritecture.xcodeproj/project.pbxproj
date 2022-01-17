@@ -11,9 +11,17 @@
 		A812BB112791B80600D5CC61 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A812BB102791B80600D5CC61 /* ContentView.swift */; };
 		A812BB132791B80900D5CC61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A812BB122791B80900D5CC61 /* Assets.xcassets */; };
 		A812BB162791B80900D5CC61 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A812BB152791B80900D5CC61 /* Preview Assets.xcassets */; };
-		A812BB202791B80900D5CC61 /* AmritectureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A812BB1F2791B80900D5CC61 /* AmritectureTests.swift */; };
 		A812BB2A2791B80900D5CC61 /* AmritectureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A812BB292791B80900D5CC61 /* AmritectureUITests.swift */; };
 		A812BB2C2791B80900D5CC61 /* AmritectureUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A812BB2B2791B80900D5CC61 /* AmritectureUITestsLaunchTests.swift */; };
+		A87BC7292792687D00CE2285 /* RouterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC7282792687D00CE2285 /* RouterState.swift */; };
+		A87BC75427952D7B00CE2285 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = A87BC75327952D7B00CE2285 /* Algorithms */; };
+		A87BC764279536F200CE2285 /* AnimalModule in Frameworks */ = {isa = PBXBuildFile; productRef = A87BC763279536F200CE2285 /* AnimalModule */; };
+		A87BC76D27953B0300CE2285 /* SettingModule in Frameworks */ = {isa = PBXBuildFile; productRef = A87BC76C27953B0300CE2285 /* SettingModule */; };
+		A87BC77027954E3800CE2285 /* LoginService in Frameworks */ = {isa = PBXBuildFile; productRef = A87BC76F27954E3800CE2285 /* LoginService */; };
+		A87BC7722795514D00CE2285 /* AppModuleContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC7712795514D00CE2285 /* AppModuleContainer.swift */; };
+		A87BC7772795642A00CE2285 /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC7762795642A00CE2285 /* AuthState.swift */; };
+		A87BC7802795734400CE2285 /* LoginModule in Frameworks */ = {isa = PBXBuildFile; productRef = A87BC77F2795734400CE2285 /* LoginModule */; };
+		A87BC7832795AA0D00CE2285 /* AnimalService in Frameworks */ = {isa = PBXBuildFile; productRef = A87BC7822795AA0D00CE2285 /* AnimalService */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +48,17 @@
 		A812BB122791B80900D5CC61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A812BB152791B80900D5CC61 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A812BB1B2791B80900D5CC61 /* AmritectureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmritectureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A812BB1F2791B80900D5CC61 /* AmritectureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmritectureTests.swift; sourceTree = "<group>"; };
 		A812BB252791B80900D5CC61 /* AmritectureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmritectureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A812BB292791B80900D5CC61 /* AmritectureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmritectureUITests.swift; sourceTree = "<group>"; };
 		A812BB2B2791B80900D5CC61 /* AmritectureUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmritectureUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A87BC7282792687D00CE2285 /* RouterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterState.swift; sourceTree = "<group>"; };
+		A87BC762279536E100CE2285 /* AnimalModule */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AnimalModule; path = Modules/AnimalModule; sourceTree = "<group>"; };
+		A87BC76B27953AFC00CE2285 /* SettingModule */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SettingModule; path = Modules/SettingModule; sourceTree = "<group>"; };
+		A87BC76E27954DAC00CE2285 /* LoginService */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoginService; path = Modules/LoginService; sourceTree = "<group>"; };
+		A87BC7712795514D00CE2285 /* AppModuleContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModuleContainer.swift; sourceTree = "<group>"; };
+		A87BC7762795642A00CE2285 /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
+		A87BC77E2795731500CE2285 /* LoginModule */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoginModule; path = Modules/LoginModule; sourceTree = "<group>"; };
+		A87BC7812795A8D900CE2285 /* AnimalService */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AnimalService; path = Modules/AnimalService; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +66,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87BC7802795734400CE2285 /* LoginModule in Frameworks */,
+				A87BC764279536F200CE2285 /* AnimalModule in Frameworks */,
+				A87BC75427952D7B00CE2285 /* Algorithms in Frameworks */,
+				A87BC77027954E3800CE2285 /* LoginService in Frameworks */,
+				A87BC7832795AA0D00CE2285 /* AnimalService in Frameworks */,
+				A87BC76D27953B0300CE2285 /* SettingModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,10 +95,12 @@
 		A812BB022791B80600D5CC61 = {
 			isa = PBXGroup;
 			children = (
+				A87BC761279536E100CE2285 /* Packages */,
 				A812BB0D2791B80600D5CC61 /* Amritecture */,
 				A812BB1E2791B80900D5CC61 /* AmritectureTests */,
 				A812BB282791B80900D5CC61 /* AmritectureUITests */,
 				A812BB0C2791B80600D5CC61 /* Products */,
+				A87BC75E2795360E00CE2285 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,7 +118,10 @@
 			isa = PBXGroup;
 			children = (
 				A812BB0E2791B80600D5CC61 /* AmritectureApp.swift */,
+				A87BC7712795514D00CE2285 /* AppModuleContainer.swift */,
+				A87BC7762795642A00CE2285 /* AuthState.swift */,
 				A812BB102791B80600D5CC61 /* ContentView.swift */,
+				A87BC7282792687D00CE2285 /* RouterState.swift */,
 				A812BB122791B80900D5CC61 /* Assets.xcassets */,
 				A812BB142791B80900D5CC61 /* Preview Content */,
 			);
@@ -113,7 +139,6 @@
 		A812BB1E2791B80900D5CC61 /* AmritectureTests */ = {
 			isa = PBXGroup;
 			children = (
-				A812BB1F2791B80900D5CC61 /* AmritectureTests.swift */,
 			);
 			path = AmritectureTests;
 			sourceTree = "<group>";
@@ -125,6 +150,25 @@
 				A812BB2B2791B80900D5CC61 /* AmritectureUITestsLaunchTests.swift */,
 			);
 			path = AmritectureUITests;
+			sourceTree = "<group>";
+		};
+		A87BC75E2795360E00CE2285 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A87BC761279536E100CE2285 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				A87BC762279536E100CE2285 /* AnimalModule */,
+				A87BC76B27953AFC00CE2285 /* SettingModule */,
+				A87BC76E27954DAC00CE2285 /* LoginService */,
+				A87BC77E2795731500CE2285 /* LoginModule */,
+				A87BC7812795A8D900CE2285 /* AnimalService */,
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +187,14 @@
 			dependencies = (
 			);
 			name = Amritecture;
+			packageProductDependencies = (
+				A87BC75327952D7B00CE2285 /* Algorithms */,
+				A87BC763279536F200CE2285 /* AnimalModule */,
+				A87BC76C27953B0300CE2285 /* SettingModule */,
+				A87BC76F27954E3800CE2285 /* LoginService */,
+				A87BC77F2795734400CE2285 /* LoginModule */,
+				A87BC7822795AA0D00CE2285 /* AnimalService */,
+			);
 			productName = Amritecture;
 			productReference = A812BB0B2791B80600D5CC61 /* Amritecture.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +267,9 @@
 				Base,
 			);
 			mainGroup = A812BB022791B80600D5CC61;
+			packageReferences = (
+				A87BC75227952D7B00CE2285 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			productRefGroup = A812BB0C2791B80600D5CC61 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,6 +313,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A812BB112791B80600D5CC61 /* ContentView.swift in Sources */,
+				A87BC7772795642A00CE2285 /* AuthState.swift in Sources */,
+				A87BC7722795514D00CE2285 /* AppModuleContainer.swift in Sources */,
+				A87BC7292792687D00CE2285 /* RouterState.swift in Sources */,
 				A812BB0F2791B80600D5CC61 /* AmritectureApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,7 +324,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A812BB202791B80900D5CC61 /* AmritectureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +471,7 @@
 		A812BB302791B80900D5CC61 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -443,6 +501,7 @@
 		A812BB312791B80900D5CC61 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -605,6 +664,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A87BC75227952D7B00CE2285 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A87BC75327952D7B00CE2285 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A87BC75227952D7B00CE2285 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+		A87BC763279536F200CE2285 /* AnimalModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AnimalModule;
+		};
+		A87BC76C27953B0300CE2285 /* SettingModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SettingModule;
+		};
+		A87BC76F27954E3800CE2285 /* LoginService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LoginService;
+		};
+		A87BC77F2795734400CE2285 /* LoginModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LoginModule;
+		};
+		A87BC7822795AA0D00CE2285 /* AnimalService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AnimalService;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A812BB032791B80600D5CC61 /* Project object */;
 }
