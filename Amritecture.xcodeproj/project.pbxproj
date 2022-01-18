@@ -14,7 +14,6 @@
 		A812BB2A2791B80900D5CC61 /* AmritectureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A812BB292791B80900D5CC61 /* AmritectureUITests.swift */; };
 		A812BB2C2791B80900D5CC61 /* AmritectureUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A812BB2B2791B80900D5CC61 /* AmritectureUITestsLaunchTests.swift */; };
 		A87BC7292792687D00CE2285 /* RouterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC7282792687D00CE2285 /* RouterState.swift */; };
-		A87BC75427952D7B00CE2285 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = A87BC75327952D7B00CE2285 /* Algorithms */; };
 		A87BC764279536F200CE2285 /* AnimalModule in Frameworks */ = {isa = PBXBuildFile; productRef = A87BC763279536F200CE2285 /* AnimalModule */; };
 		A87BC76D27953B0300CE2285 /* SettingModule in Frameworks */ = {isa = PBXBuildFile; productRef = A87BC76C27953B0300CE2285 /* SettingModule */; };
 		A87BC77027954E3800CE2285 /* LoginService in Frameworks */ = {isa = PBXBuildFile; productRef = A87BC76F27954E3800CE2285 /* LoginService */; };
@@ -68,7 +67,6 @@
 			files = (
 				A87BC7802795734400CE2285 /* LoginModule in Frameworks */,
 				A87BC764279536F200CE2285 /* AnimalModule in Frameworks */,
-				A87BC75427952D7B00CE2285 /* Algorithms in Frameworks */,
 				A87BC77027954E3800CE2285 /* LoginService in Frameworks */,
 				A87BC7832795AA0D00CE2285 /* AnimalService in Frameworks */,
 				A87BC76D27953B0300CE2285 /* SettingModule in Frameworks */,
@@ -188,7 +186,6 @@
 			);
 			name = Amritecture;
 			packageProductDependencies = (
-				A87BC75327952D7B00CE2285 /* Algorithms */,
 				A87BC763279536F200CE2285 /* AnimalModule */,
 				A87BC76C27953B0300CE2285 /* SettingModule */,
 				A87BC76F27954E3800CE2285 /* LoginService */,
@@ -268,7 +265,6 @@
 			);
 			mainGroup = A812BB022791B80600D5CC61;
 			packageReferences = (
-				A87BC75227952D7B00CE2285 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = A812BB0C2791B80600D5CC61 /* Products */;
 			projectDirPath = "";
@@ -665,23 +661,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		A87BC75227952D7B00CE2285 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-algorithms.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		A87BC75327952D7B00CE2285 /* Algorithms */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A87BC75227952D7B00CE2285 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
-			productName = Algorithms;
-		};
 		A87BC763279536F200CE2285 /* AnimalModule */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AnimalModule;

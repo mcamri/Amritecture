@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Algorithms
 import AnimalModule
 import SettingModule
 import LoginService
