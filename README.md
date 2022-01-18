@@ -7,3 +7,4 @@ This project is to show architecture for building iOS app with SwiftUI
 4. For each module we split into different package and we use `Swift Package Manager` to manage dependency
 5. We create all module that is necessary for running app in `AppModuleContainer` and pass the dependency to each module
 6. The app show pages for `Tab`, `Navigation`, and `Fullscreen`
+7. Testing is used to test `ViewModel`, for example `AnimalListViewModel`
