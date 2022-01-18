@@ -13,7 +13,7 @@ import AnimalService
 import SettingModule
 
 struct AppModuleContainer {
-  let animalService: AnimalService = FewAnimalService()
+  let animalService: AnimalService
   let animalModule: AnimalModule
   let settingModule: SettingModule
   
@@ -21,6 +21,7 @@ struct AppModuleContainer {
   var loginModule: LoginModule
   
   init() {
+    animalService = CatAnimalService(loginService: loginService)
     loginModule = LoginModule(loginService: loginService)
     animalModule = AnimalModule(animalService: animalService)
     settingModule = SettingModule(loginService: loginService)

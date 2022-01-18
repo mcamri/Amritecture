@@ -21,18 +21,19 @@ struct AnimalListView: View {
     VStack {
       switch viewModel.state {
       case .loaded(let animals):
-        List(animals, id: \.animalId) { item in
+        List(animals, id: \.id) { animal in
             NavigationLink(
-              tag: item.animalId,
+              tag: animal.id,
               selection: $openAnimalDetailViewItem,
               destination: {
-                AnimalDetailBuilder.build(animal: item, openAnimalDetailViewItem: $openAnimalDetailViewItem)
+                AnimalDetailBuilder.build(animal: animal, openAnimalDetailViewItem: $openAnimalDetailViewItem)
               },
               label: {
-                HStack {
-                  Text(item.iconUnicode)
-                    .frame(width: 50, height: 50, alignment: .center)
-                  Text(item.name)
+                VStack {
+                  Text("Name: \(animal.name)")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                  Text("Origin: \(animal.origin)")
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
               })
         }
@@ -43,7 +44,7 @@ struct AnimalListView: View {
       case .loading:
         ProgressView()
           .onAppear {
-            viewModel.loadAnimal()
+              viewModel.loadAnimal()
           }
       }
     }
@@ -52,16 +53,13 @@ struct AnimalListView: View {
 
 struct FirstTabDetailView_Previews: PreviewProvider {
   class OneAnimalService: AnimalService {
-      private var animals = [
-      Animal(iconUnicode: "🦢", name: "Swan")
-    ]
-    
-    func getAnimalList(result: ([Animal]?) -> Void) {
-      result(animals)
-    }
-    
-    func deleteAnimal(animal: Animal) {
-      animals = animals.filter({ $0.animalId != animal.animalId })
+    func getAnimalList() async -> Result<[Animal], Error> {
+      .success([Animal(
+        id: "kuciang",
+        origin: "Indonesia",
+        name: "Kucing Garong",
+        image: Animal.Image(url: "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg")
+      )])
     }
   }
   

@@ -1,26 +1,39 @@
+import Foundation
+import LoginService
+
 public protocol AnimalService {
-  func getAnimalList(result: ([Animal]?) -> Void)
-  func deleteAnimal(animal: Animal)
+  func getAnimalList() async -> Result<[Animal], Error>
 }
 
-public class FewAnimalService: AnimalService {
-    private var animals = [
-    Animal(iconUnicode: "🦢", name: "Swan"),
-    Animal(iconUnicode: "🐟", name: "Fish"),
-    Animal(iconUnicode: "🐸", name: "Frog"),
-    Animal(iconUnicode: "🐐", name: "Goat"),
-    Animal(iconUnicode: "🐪", name: "Camel"),
-    Animal(iconUnicode: "🦒", name: "Giraffe"),
-    Animal(iconUnicode: "🐢", name: "Turtle")
-  ]
-  
-  public func getAnimalList(result: ([Animal]?) -> Void) {
-    result(animals)
+public class CatAnimalService: AnimalService {
+  enum Constant {
+    static let urlString = "https://api.thecatapi.com/v1/breeds"
   }
   
-  public func deleteAnimal(animal: Animal) {
-    animals = animals.filter({ $0.animalId != animal.animalId })
+  private var loginService: LoginService
+  
+  public enum MyError: Error {
+    case failedToGetAnimal
   }
   
-  public init() {}
+  public func getAnimalList() async -> Result<[Animal], Error> {
+    guard let url = URL(string: Constant.urlString),
+          let token = loginService.token else { return .failure(MyError.failedToGetAnimal) }
+    
+    do {
+      var urlRequest = URLRequest(url: url)
+      urlRequest.addValue(token, forHTTPHeaderField: "x-api-key")
+      let (data, _) = try await URLSession.shared.data(for: urlRequest)
+      let animals = try JSONDecoder().decode([Animal].self, from: data)
+      return .success(animals)
+    } catch {
+      print(error.localizedDescription)
+      debugPrint(error)
+      return .failure(error)
+    }
+  }
+  
+  public init(loginService: LoginService) {
+    self.loginService = loginService
+  }
 }

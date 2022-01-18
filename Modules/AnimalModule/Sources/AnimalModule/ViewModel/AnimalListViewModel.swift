@@ -25,18 +25,18 @@ class AnimalListViewModel: ObservableObject {
     self.animalService = animalService
   }
   
-  //TODO: to replace this closure base to async await
-  func loadAnimal() {
-    animalService.getAnimalList { [weak self] animals in
-      guard let strongSelf = self else { return }
-      if let animals = animals {
-        if animals.count > 0 {
-          strongSelf.state = .loaded(animals)
-        } else {
-          strongSelf.state = .empty("Animal list is empty!")
+  func loadAnimal(completion: ((Bool) -> Void)? = nil) {
+    Task {
+      let result = await animalService.getAnimalList()
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let animals):
+          self.state = animals.count > 0 ? .loaded(animals) : .empty("Animal list is empty!")
+          completion?(true)
+        case .failure:
+          self.state = .error("Error fetching animals!")
+          completion?(false)
         }
-      } else {
-        strongSelf.state = .error("Error fetching animals!")
       }
     }
   }

@@ -14,7 +14,12 @@ class AnimalListViewModelTests: XCTestCase {
   
   func testValidResult() throws {
     let viewModel = AnimalListViewModel(animalService: OneAnimalService())
-    viewModel.loadAnimal()
+    let expectation = self.expectation(description: "valid")
+    viewModel.loadAnimal() { _ in
+      expectation.fulfill()
+    }
+    waitForExpectations(timeout: 1, handler: nil)
+    
     if case let .loaded(animal) = viewModel.state {
       XCTAssertGreaterThan(animal.count, 0)
     } else {
@@ -24,7 +29,12 @@ class AnimalListViewModelTests: XCTestCase {
   
   func testEmptyResult() throws {
     let viewModel = AnimalListViewModel(animalService: EmptyAnimalService())
-    viewModel.loadAnimal()
+    let expectation = self.expectation(description: "empty")
+    viewModel.loadAnimal() { _ in
+      expectation.fulfill()
+    }
+    waitForExpectations(timeout: 1, handler: nil)
+    
     if case let .empty(emptyString) = viewModel.state {
       XCTAssertEqual(emptyString, "Animal list is empty!")
     } else {
@@ -34,7 +44,11 @@ class AnimalListViewModelTests: XCTestCase {
   
   func testErrorResult() throws {
     let viewModel = AnimalListViewModel(animalService: ErrorAnimalService())
-    viewModel.loadAnimal()
+    let expectation = self.expectation(description: "error")
+    viewModel.loadAnimal() { _ in
+      expectation.fulfill()
+    }
+    waitForExpectations(timeout: 1, handler: nil)
     if case let .error(errorString) = viewModel.state {
       XCTAssertEqual(errorString, "Error fetching animals!")
     } else {
@@ -45,30 +59,29 @@ class AnimalListViewModelTests: XCTestCase {
 }
 
 class EmptyAnimalService: AnimalService {
-  func getAnimalList(result: ([Animal]?) -> Void) {
-    result([])
+  func getAnimalList() async -> Result<[Animal], Error> {
+    .success([])
   }
-  func deleteAnimal(animal: Animal) {}
 }
 
 class ErrorAnimalService: AnimalService {
-  func getAnimalList(result: ([Animal]?) -> Void) {
-    result(nil)
+  enum MyError: Error {
+    case failedToGetCat
   }
-  
-  func deleteAnimal(animal: Animal) {}
+  func getAnimalList() async -> Result<[Animal], Error> {
+    .failure(MyError.failedToGetCat)
+  }
 }
 
 class OneAnimalService: AnimalService {
-    private var animals = [
-    Animal(iconUnicode: "🦢", name: "Swan")
-  ]
+  private let animal = Animal(
+    id: "kuciang",
+    origin: "Indonesia",
+    name: "Kucing Garong",
+    image: Animal.Image(url: "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg")
+  )
   
-  func getAnimalList(result: ([Animal]?) -> Void) {
-    result(animals)
-  }
-  
-  func deleteAnimal(animal: Animal) {
-    animals = animals.filter({ $0.animalId != animal.animalId })
+  func getAnimalList() async -> Result<[Animal], Error> {
+    .success([animal])
   }
 }

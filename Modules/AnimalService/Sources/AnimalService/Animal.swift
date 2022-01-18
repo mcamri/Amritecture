@@ -7,13 +7,24 @@
 
 import Foundation
 
-public struct Animal {
-  public let animalId: String = String("\(Int.random(in: 1..<Int.max))")
-  public var iconUnicode: String
-  public var name: String
+public struct Animal: Decodable {
+  public struct Image: Decodable {
+    public var url: String?
+    
+    public init(url: String) {
+      self.url = url
+    }
+  }
   
-  public init(iconUnicode: String, name: String) {
-    self.iconUnicode = iconUnicode
+  public var id: String
+  public var origin: String
+  public var name: String
+  public var image: Image?
+  
+  public init(id: String, origin: String, name: String, image: Image) {
+    self.image = image
+    self.origin = origin
     self.name = name
+    self.id = id
   }
 }
