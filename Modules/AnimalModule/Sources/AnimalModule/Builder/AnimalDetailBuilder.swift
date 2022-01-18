@@ -10,7 +10,9 @@ import SwiftUI
 import AnimalService
 
 class AnimalDetailBuilder {
+
   static func build(animal: Animal, openAnimalDetailViewItem: Binding<String?>) -> some View {
-    AnimalDetailView(item: animal, openAnimalDetailViewItem: openAnimalDetailViewItem)
+    let viewModel = AnimalDetailViewModel(animal: animal)
+    return AnimalDetailView(viewModel: viewModel, openAnimalDetailViewItem: openAnimalDetailViewItem)
   }
 }

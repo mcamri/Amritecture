@@ -14,13 +14,11 @@ class AuthState: ObservableObject {
   @Published var isAuthenticated = false
   
   var loginService: LoginService
-  var loginModule: LoginModule
   
   var storage = Set<AnyCancellable>()
   
-  init(loginService: LoginService, loginModule: LoginModule) {
+  init(loginService: LoginService) {
     self.loginService = loginService
-    self.loginModule = loginModule
     
     loginService.isAuthenticated.sink(receiveValue: { isAuthenticated in
       self.isAuthenticated = isAuthenticated

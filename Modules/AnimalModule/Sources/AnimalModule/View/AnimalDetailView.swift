@@ -10,18 +10,19 @@ import AnimalService
 
 struct AnimalDetailView: View {
   
-  let item: Animal
+  @ObservedObject var viewModel: AnimalDetailViewModel
+  
   @EnvironmentObject var routerState: AnimalRouterState
   @Binding var openAnimalDetailViewItem: String?
-  
+
   var body: some View {
     VStack {
       
       VStack {
-        Text(item.iconUnicode)
+        Text(viewModel.animal.iconUnicode)
           .font(.system(size: 200))
           .padding()
-        Text(item.name)
+        Text(viewModel.animal.name)
           .font(.system(size: 30))
           .padding()
       }
@@ -50,8 +51,8 @@ struct EmojiView_Previews: PreviewProvider {
   @State static var openAnimalDetailViewItem: String?
   
   static var previews: some View {
-    AnimalDetailView(
-      item: Animal(iconUnicode: "A", name: "Alphabet A"),
+    AnimalDetailBuilder.build(
+      animal: Animal(iconUnicode: "A", name: "Alphabet A"),
       openAnimalDetailViewItem: $openAnimalDetailViewItem
     )
   }

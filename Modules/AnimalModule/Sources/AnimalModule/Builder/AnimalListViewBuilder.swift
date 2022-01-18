@@ -14,7 +14,7 @@ class AnimalListViewBuilder {
   static var animalService: AnimalService!
   
   static func build() -> some View {
-    let viewModel = AnimalListViewViewModel(animalService: animalService)
+    let viewModel = AnimalListViewModel(animalService: animalService)
     let view = AnimalListView(viewModel: viewModel)
     return view
   }

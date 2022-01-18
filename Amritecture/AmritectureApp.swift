@@ -22,10 +22,7 @@ struct AmritectureApp: App {
   @StateObject var authState: AuthState
   
   init() {
-    let auth = AuthState(
-      loginService: appModuleContainer.loginService,
-      loginModule: appModuleContainer.loginModule
-    )
+    let auth = AuthState(loginService: appModuleContainer.loginService)
     _authState = StateObject(wrappedValue: auth)
   }
   

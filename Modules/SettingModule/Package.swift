@@ -25,6 +25,6 @@ let package = Package(
             dependencies: ["LoginService"]),
         .testTarget(
             name: "SettingModuleTests",
-            dependencies: ["SettingModule"]),
+            dependencies: ["SettingModule", "LoginService"]),
     ]
 )

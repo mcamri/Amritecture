@@ -10,7 +10,7 @@ import AnimalService
 
 struct AnimalListView: View {
   
-  @ObservedObject var viewModel: AnimalListViewViewModel
+  @ObservedObject var viewModel: AnimalListViewModel
   
   @EnvironmentObject var routerState: AnimalRouterState
   
@@ -66,6 +66,6 @@ struct FirstTabDetailView_Previews: PreviewProvider {
   }
   
   static var previews: some View {
-    AnimalListView(viewModel: AnimalListViewViewModel(animalService: OneAnimalService()))
+    AnimalListView(viewModel: AnimalListViewModel(animalService: OneAnimalService()))
   }
 }

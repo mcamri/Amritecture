@@ -25,6 +25,6 @@ let package = Package(
             dependencies: ["AnimalService"]),
         .testTarget(
             name: "AnimalModuleTests",
-            dependencies: ["AnimalModule"]),
+            dependencies: ["AnimalModule", "AnimalService"]),
     ]
 )

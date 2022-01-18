@@ -1,5 +1,5 @@
 //
-//  AnimalListViewViewModel.swift
+//  AnimalListViewModel.swift
 //  Amritecture
 //
 //  Created by amri.mc on 15/1/22.
@@ -8,7 +8,7 @@
 import Foundation
 import AnimalService
 
-class AnimalListViewViewModel: ObservableObject {
+class AnimalListViewModel: ObservableObject {
   
   @Published var state: State = .loading
   

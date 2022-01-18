@@ -7,12 +7,13 @@
 
 import XCTest
 @testable import AnimalModule
+@testable import AnimalService
 
 
 class AnimalListViewModelTests: XCTestCase {
   
   func testValidResult() throws {
-    let viewModel = AnimalListViewViewModel(animalService: OneAnimalService())
+    let viewModel = AnimalListViewModel(animalService: OneAnimalService())
     viewModel.loadAnimal()
     if case let .loaded(animal) = viewModel.state {
       XCTAssertGreaterThan(animal.count, 0)
@@ -22,7 +23,7 @@ class AnimalListViewModelTests: XCTestCase {
   }
   
   func testEmptyResult() throws {
-    let viewModel = AnimalListViewViewModel(animalService: EmptyAnimalService())
+    let viewModel = AnimalListViewModel(animalService: EmptyAnimalService())
     viewModel.loadAnimal()
     if case let .empty(emptyString) = viewModel.state {
       XCTAssertEqual(emptyString, "Animal list is empty!")
@@ -32,7 +33,7 @@ class AnimalListViewModelTests: XCTestCase {
   }
   
   func testErrorResult() throws {
-    let viewModel = AnimalListViewViewModel(animalService: ErrorAnimalService())
+    let viewModel = AnimalListViewModel(animalService: ErrorAnimalService())
     viewModel.loadAnimal()
     if case let .error(errorString) = viewModel.state {
       XCTAssertEqual(errorString, "Error fetching animals!")
