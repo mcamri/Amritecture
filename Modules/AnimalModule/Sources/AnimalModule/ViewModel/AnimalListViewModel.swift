@@ -13,10 +13,10 @@ class AnimalListViewModel: ObservableObject {
   @Published var state: State = .loading
   
   enum State {
-      case loading
-      case loaded([Animal])
-      case empty(String)
-      case error(String)
+    case loading
+    case loaded([Animal])
+    case empty(String)
+    case error(String)
   }
   
   private var animalService: AnimalService
@@ -25,19 +25,17 @@ class AnimalListViewModel: ObservableObject {
     self.animalService = animalService
   }
   
-  func loadAnimal(completion: ((Bool) -> Void)? = nil) {
-    Task {
-      let result = await animalService.getAnimalList()
-      DispatchQueue.main.async {
-        switch result {
-        case .success(let animals):
-          self.state = animals.count > 0 ? .loaded(animals) : .empty("Animal list is empty!")
-          completion?(true)
-        case .failure:
-          self.state = .error("Error fetching animals!")
-          completion?(false)
-        }
-      }
+  func loadAnimal() async {
+    let result = await animalService.getAnimalList()
+    switch result {
+    case .success(let animals):
+      await updateState(animals.count > 0 ? .loaded(animals) : .empty("Animal list is empty!"))
+    case .failure:
+      await updateState(.error("Error fetching animals!"))
     }
+  }
+  
+  @MainActor func updateState(_ state: State) async {
+    self.state = state
   }
 }

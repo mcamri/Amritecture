@@ -12,14 +12,9 @@ import XCTest
 
 class AnimalListViewModelTests: XCTestCase {
   
-  func testValidResult() throws {
+  func testValidResult() async throws {
     let viewModel = AnimalListViewModel(animalService: OneAnimalService())
-    let expectation = self.expectation(description: "valid")
-    viewModel.loadAnimal() { _ in
-      expectation.fulfill()
-    }
-    waitForExpectations(timeout: 1, handler: nil)
-    
+    await viewModel.loadAnimal()
     if case let .loaded(animal) = viewModel.state {
       XCTAssertGreaterThan(animal.count, 0)
     } else {
@@ -27,14 +22,9 @@ class AnimalListViewModelTests: XCTestCase {
     }
   }
   
-  func testEmptyResult() throws {
+  func testEmptyResult() async throws {
     let viewModel = AnimalListViewModel(animalService: EmptyAnimalService())
-    let expectation = self.expectation(description: "empty")
-    viewModel.loadAnimal() { _ in
-      expectation.fulfill()
-    }
-    waitForExpectations(timeout: 1, handler: nil)
-    
+    await viewModel.loadAnimal()
     if case let .empty(emptyString) = viewModel.state {
       XCTAssertEqual(emptyString, "Animal list is empty!")
     } else {
@@ -42,13 +32,9 @@ class AnimalListViewModelTests: XCTestCase {
     }
   }
   
-  func testErrorResult() throws {
+  func testErrorResult() async throws {
     let viewModel = AnimalListViewModel(animalService: ErrorAnimalService())
-    let expectation = self.expectation(description: "error")
-    viewModel.loadAnimal() { _ in
-      expectation.fulfill()
-    }
-    waitForExpectations(timeout: 1, handler: nil)
+    await viewModel.loadAnimal()
     if case let .error(errorString) = viewModel.state {
       XCTAssertEqual(errorString, "Error fetching animals!")
     } else {

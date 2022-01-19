@@ -44,7 +44,9 @@ struct AnimalListView: View {
       case .loading:
         ProgressView()
           .onAppear {
-              viewModel.loadAnimal()
+            Task {
+              await viewModel.loadAnimal()
+            }
           }
       }
     }
