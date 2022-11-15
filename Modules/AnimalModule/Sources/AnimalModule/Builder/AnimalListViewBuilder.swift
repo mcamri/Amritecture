@@ -10,9 +10,6 @@ import SwiftUI
 import AnimalService
 
 class AnimalListViewBuilder {
-  
-  static var animalService: AnimalService!
-  
   static func build(animalService: AnimalService, animalDetailView: AnimalDetailView) -> AnimalListView {
     let viewModel = AnimalListViewModel(animalService: animalService)
     let view = AnimalListView(viewModel: viewModel, animalDetailView: animalDetailView)
