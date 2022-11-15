@@ -8,16 +8,19 @@ public struct AnimalModule {
   
   public init(animalService: AnimalService) {
     self.animalService = animalService
-    
-    setupBuilder()
   }
   
   public func view() -> some View {
-    return WelcomeAnimalBuilder.build()
+    return buildModule()
   }
-  
-  private func setupBuilder() {
-    AnimalListViewBuilder.animalService = animalService
+
+  private func buildModule() -> some View {
+    let animalDetailView = AnimalDetailBuilder.build()
+
+    let animalListView = AnimalListViewBuilder.build(animalService: animalService, animalDetailView: animalDetailView)
+
+    let welcomeAnimalView = WelcomeAnimalBuilder.build(animalListView: animalListView)
+
+    return welcomeAnimalView
   }
-  
 }

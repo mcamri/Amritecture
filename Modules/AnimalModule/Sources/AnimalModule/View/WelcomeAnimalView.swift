@@ -10,23 +10,23 @@ import SwiftUI
 struct WelcomeAnimalView: View {
   
   @EnvironmentObject var routerState: AnimalRouterState
-  
+
+  let animalListView: AnimalListView
+
+  private func startAnimalList() -> some View {
+    return animalListView
+  }
+
   var body: some View {
     NavigationView {
       VStack {
         Text("Welcome to animal kingdom!")
           .padding()
         NavigationLink("Animal List", isActive: $routerState.openAnimalListContainerView) {
-          AnimalListViewBuilder.build()
+          startAnimalList()
         }.padding()
       }.navigationTitle("Animal Kingdom")
     }
     .navigationViewStyle(.stack)
-  }
-}
-
-struct FirstTabView_Previews: PreviewProvider {
-  static var previews: some View {
-    WelcomeAnimalView()
   }
 }

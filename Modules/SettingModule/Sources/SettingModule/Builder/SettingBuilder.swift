@@ -9,11 +9,9 @@ import SwiftUI
 import LoginService
 
 class SettingBuilder {
-  static var loginService: LoginService!
-  
-  static func build() -> some View {
+  static func build(loginService: LoginService, aboutView: AboutView) -> some View {
     let viewModel = SettingViewModel(loginService: loginService)
-    let view = SettingView(viewModel: viewModel)
+    let view = SettingView(viewModel: viewModel, aboutView: aboutView)
     return view
   }
 }

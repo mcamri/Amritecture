@@ -11,15 +11,12 @@ import AnimalService
 struct AnimalDetailView: View {
   
   @ObservedObject var viewModel: AnimalDetailViewModel
-  
   @EnvironmentObject var routerState: AnimalRouterState
-  @Binding var openAnimalDetailViewItem: String?
   
   var body: some View {
     VStack {
       VStack {
-        
-        if let urlString = viewModel.animal.image?.url {
+        if let urlString = viewModel.animalURLString {
           AsyncImage(
             url: URL(string: urlString),
             content: { image in
@@ -32,17 +29,13 @@ struct AnimalDetailView: View {
             }
           )
         }
-        Text("Name: \(viewModel.animal.name)")
-        Text("Origin: \(viewModel.animal.origin)")
+        Text("Name: \(viewModel.animalName ?? "Unknown Name")")
+        Text("Origin: \(viewModel.animalOrigin ?? "Unknown Origin")")
       }
       .padding()
       
       
       HStack {
-        Spacer()
-        Button("Cat list") {
-          openAnimalDetailViewItem = nil
-        }
         Spacer()
         Button("Home") {
           routerState.openAnimalListContainerView = false
@@ -53,23 +46,5 @@ struct AnimalDetailView: View {
       
       Spacer()
     }
-  }
-}
-
-struct EmojiView_Previews: PreviewProvider {
-  @State static var openAnimalDetailViewItem: String?
-  
-  static let animal = Animal(
-    id: "kuciang",
-    origin: "Indonesia",
-    name: "Kucing Garong",
-    image: Animal.Image(url: "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg")
-  )
-  
-  static var previews: some View {
-    AnimalDetailBuilder.build(
-      animal: animal,
-      openAnimalDetailViewItem: $openAnimalDetailViewItem
-    )
   }
 }

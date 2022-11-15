@@ -11,8 +11,8 @@ import AnimalService
 
 class AnimalDetailBuilder {
 
-  static func build(animal: Animal, openAnimalDetailViewItem: Binding<String?>) -> some View {
-    let viewModel = AnimalDetailViewModel(animal: animal)
-    return AnimalDetailView(viewModel: viewModel, openAnimalDetailViewItem: openAnimalDetailViewItem)
+  static func build() -> AnimalDetailView {
+    let viewModel = AnimalDetailViewModel()
+    return AnimalDetailView(viewModel: viewModel)
   }
 }

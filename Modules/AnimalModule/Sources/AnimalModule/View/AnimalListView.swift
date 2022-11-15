@@ -8,15 +8,24 @@
 import SwiftUI
 import AnimalService
 
+public class AnimalDetails: ObservableObject {
+  @Published public var openAnimalDetailViewItem: String? = nil
+  public init() {}
+}
+
 struct AnimalListView: View {
-  
   @ObservedObject var viewModel: AnimalListViewModel
-  
   @EnvironmentObject var routerState: AnimalRouterState
-  
-  //TODO: to replace with environment variable. Currently it is not working with NavigationLink
   @State var openAnimalDetailViewItem: String?
-  
+  @StateObject var animalDetails: AnimalDetails = AnimalDetails()
+
+  let animalDetailView: AnimalDetailView
+
+  private func startAnimalDetail(animal: Animal) -> some View {
+    animalDetailView.viewModel.animal = animal
+    return animalDetailView
+  }
+
   var body: some View {
     VStack {
       switch viewModel.state {
@@ -24,9 +33,9 @@ struct AnimalListView: View {
         List(animals, id: \.id) { animal in
             NavigationLink(
               tag: animal.id,
-              selection: $openAnimalDetailViewItem,
+              selection: $animalDetails.openAnimalDetailViewItem,
               destination: {
-                AnimalDetailBuilder.build(animal: animal, openAnimalDetailViewItem: $openAnimalDetailViewItem)
+                startAnimalDetail(animal: animal)
               },
               label: {
                 VStack {
@@ -50,22 +59,5 @@ struct AnimalListView: View {
           }
       }
     }
-  }
-}
-
-struct FirstTabDetailView_Previews: PreviewProvider {
-  class OneAnimalService: AnimalService {
-    func getAnimalList() async -> Result<[Animal], Error> {
-      .success([Animal(
-        id: "kuciang",
-        origin: "Indonesia",
-        name: "Kucing Garong",
-        image: Animal.Image(url: "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg")
-      )])
-    }
-  }
-  
-  static var previews: some View {
-    AnimalListView(viewModel: AnimalListViewModel(animalService: OneAnimalService()))
   }
 }

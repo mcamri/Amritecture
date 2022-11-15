@@ -8,7 +8,7 @@
 import SwiftUI
 
 class AboutBuilder {
-  static func build() -> some View {
+  static func build() -> AboutView {
     AboutView()
   }
 }

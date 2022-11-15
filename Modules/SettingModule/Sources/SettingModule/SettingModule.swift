@@ -8,16 +8,18 @@ public struct SettingModule {
   
   public init(loginService: LoginService) {
     self.loginService = loginService
-    
-    setupBuilder()
   }
   
   public func view() -> some View {
-    return SettingBuilder.build()
+    return buildModule()
   }
-  
-  private func setupBuilder() {
-    SettingBuilder.loginService = loginService
+
+  private func buildModule() -> some View {
+    let aboutView = AboutBuilder.build()
+
+    let settingModule = SettingBuilder.build(loginService: loginService, aboutView: aboutView)
+
+    return settingModule
   }
   
 }

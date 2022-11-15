@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-public class WelcomeAnimalBuilder {
-  public static func build() -> some View {
-    WelcomeAnimalView()
+class WelcomeAnimalBuilder {
+  static func build(animalListView: AnimalListView) -> WelcomeAnimalView {
+    return WelcomeAnimalView(animalListView: animalListView)
   }
 }

@@ -13,11 +13,18 @@ struct SettingView: View {
   @ObservedObject var viewModel: SettingViewModel
   
   @EnvironmentObject var routerState: SettingRouterState
+
+  private var aboutView: AboutView
   
-  init(viewModel: SettingViewModel) {
+  init(viewModel: SettingViewModel, aboutView: AboutView) {
     self.viewModel = viewModel
+    self.aboutView = aboutView
   }
-  
+
+  private func startAboutView() -> some View {
+    aboutView
+  }
+
   var body: some View {
     VStack {
       Text("Settings")
@@ -33,14 +40,7 @@ struct SettingView: View {
       })
         .padding()
     }.fullScreenCover(isPresented: $routerState.openAboutView) {
-      AboutBuilder.build()
+      startAboutView()
     }
-  }
-}
-
-struct SecondTabView_Previews: PreviewProvider {
-  static var previews: some View {
-    SettingView(viewModel: SettingViewModel(loginService: DefaultLoginService()))
-      .environmentObject(SettingRouterState())
   }
 }
